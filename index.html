@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>Top Grass — Premium Cannabis Dispensary · Bellport, NY</title>
+  <meta name="description" content="Long Island's premium adult-use cannabis dispensary in Bellport, NY. Batch-aware flower, vapes, edibles, concentrates & more — with express pickup. Serving Suffolk County. 21+." />
+  <link rel="canonical" href="https://topgrassli.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <meta name="author" content="Top Grass" />
+
+  <!-- Local / geo -->
+  <meta name="geo.region" content="US-NY" />
+  <meta name="geo.placename" content="Bellport, New York" />
+  <meta name="geo.position" content="40.8032380;-72.9494262" />
+  <meta name="ICBM" content="40.8032380, -72.9494262" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Top Grass" />
+  <meta property="og:title" content="Top Grass — Premium Cannabis Dispensary · Bellport, NY" />
+  <meta property="og:description" content="Long Island's premium adult-use cannabis dispensary. Express pickup in Bellport, NY. Serving Suffolk County. 21+." />
+  <meta property="og:url" content="https://topgrassli.com/" />
+  <meta property="og:image" content="https://topgrassli.com/assets/img/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Top Grass — The Higher Standard" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Top Grass — Premium Cannabis Dispensary · Bellport, NY" />
+  <meta name="twitter:description" content="Long Island's premium adult-use cannabis dispensary. Express pickup in Bellport, NY. 21+." />
+  <meta name="twitter:image" content="https://topgrassli.com/assets/img/og-image.jpg" />
+
+  <!-- Icons / PWA -->
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png" />
+  <link rel="apple-touch-icon" href="assets/img/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Fonts (non-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" />
+
+  <!-- Styles + LCP hint -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="assets/img/hero-cine.webp" />
+
+  <!-- 3D product viewer (drag-rotate + AR on mobile) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
+  <!-- Structured data: local cannabis dispensary -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": "https://topgrassli.com/#store",
+    "name": "Top Grass",
+    "description": "Long Island's premium adult-use cannabis dispensary in Bellport, NY.",
+    "slogan": "The Higher Standard",
+    "url": "https://topgrassli.com/",
+    "image": "https://topgrassli.com/assets/img/og-image.jpg",
+    "logo": "https://topgrassli.com/assets/img/favicon-512.png",
+    "telephone": "+1-631-914-3596",
+    "priceRange": "$$",
+    "currenciesAccepted": "USD",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "28 Sawgrass Dr",
+      "addressLocality": "Bellport",
+      "addressRegion": "NY",
+      "postalCode": "11713",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.8032380,
+      "longitude": -72.9494262
+    },
+    "hasMap": "https://www.google.com/maps/dir/?api=1&destination=28+Sawgrass+Dr+Bellport+NY+11713",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }],
+    "areaServed": [
+      { "@type": "City", "name": "Bellport" },
+      { "@type": "City", "name": "Patchogue" },
+      { "@type": "City", "name": "Brookhaven" },
+      { "@type": "AdministrativeArea", "name": "Suffolk County" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Decorative overlays -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <span class="logo-shine"><img class="leaf" src="assets/img/logo.webp" alt="Top Grass" /></span>
+      <div class="preloader__num"><span id="preNum">0</span><span class="pct">%</span></div>
+      <div class="preloader__bar"></div>
+      <div class="preloader__word">Top Grass · The Higher Standard</div>
+    </div>
+  </div>
+
+  <!-- ============ AGE GATE ============ -->
+  <div class="age-gate" id="ageGate">
+    <div class="age-gate__inner">
+      <model-viewer class="leaf-3d" src="assets/models/leaf.glb" poster="assets/img/logo.webp" alt="Top Grass"
+        camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="32deg" interaction-prompt="none"
+        exposure="1.25" shadow-intensity="1.1" tone-mapping="neutral" environment-image="neutral"
+        camera-orbit="0deg 75deg 105%" disable-zoom touch-action="pan-y" loading="eager"></model-viewer>
+      <div class="age-gate__title display">Welcome to Top&nbsp;Grass</div>
+      <p>You must be 21 years or older to enter. Please verify your age.</p>
+      <div class="age-gate__btns">
+        <button class="btn btn-gold" id="ageYes">I'm 21 or older <span class="arrow">→</span></button>
+      </div>
+      <p class="deny" style="margin-top:1.4rem"><a href="https://www.google.com" id="ageNo">I am under 21</a></p>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav__logo">
+      <img src="assets/img/logo.webp" alt="Top Grass" class="logo-mark" />
+      Top Grass
+    </a>
+    <div class="nav__right">
+      <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost nav__order" data-cursor>Order Now</a>
+      <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay" data-cursor>
+        <span class="menu-trigger__label">Menu</span>
+        <span class="menu-trigger__burger"><i></i><i></i></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ FULLSCREEN MENU ============ -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <div class="menu-overlay__bg"></div>
+    <div class="menu__inner wrap">
+      <nav class="menu__links" aria-label="Primary">
+        <a href="#top"   data-num="01"><span>Home</span></a>
+        <a href="#shop"  data-num="02"><span>The Collection</span></a>
+        <a href="#picks" data-num="03"><span>Staff Picks</span></a>
+        <a href="#story" data-num="04"><span>The Difference</span></a>
+        <a href="#visit" data-num="05"><span>Visit Us</span></a>
+        <a href="https://topgrassli.com/store" target="_blank" rel="noopener" data-num="06"><span>Order Now</span></a>
+      </nav>
+      <aside class="menu__aside">
+        <div class="menu__aside-block">
+          <span class="menu__aside-label">Visit</span>
+          <p>28 Sawgrass Dr<br>Bellport, NY 11713</p>
+        </div>
+        <div class="menu__aside-block">
+          <span class="menu__aside-label">Contact</span>
+          <p><a href="tel:+16319143596">(631) 914-3596</a><br><span id="menuHours">Open daily · 9 – 9</span></p>
+        </div>
+        <div class="menu__aside-block">
+          <span class="menu__aside-label">Follow</span>
+          <p><a href="#">Instagram</a> · <a href="#">Newsletter</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <main id="main">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-cine.webp">
+      <source src="assets/video/hero-loop.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero__glow"></div>
+
+    <div class="wrap hero__content">
+      <span class="eyebrow reveal">Bellport, NY · Long Island</span>
+      <h1 class="display">
+        <span class="line"><span>The Higher</span></span>
+        <span class="line"><span class="serif-italic">Standard.</span></span>
+      </h1>
+      <p class="hero__sub reveal">Uncompromising quality, batch-aware sourcing, and an experience worthy of the flower. Premium cannabis for Long Island's discerning.</p>
+      <div class="hero__cta reveal">
+        <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-gold" data-cursor>Shop the Collection <span class="arrow">→</span></a>
+        <a href="#story" class="btn btn-ghost" data-cursor>Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll"><span>Scroll</span><div class="bar"></div></div>
+    <div class="hero__hint"><span class="dot" id="liveDot"></span> <span id="liveStatus">Now serving Suffolk County</span></div>
+  </header>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__inner" id="marqueeInner">
+      <div class="marquee__track">
+        <span>Lab-Tested</span><span>Batch-Aware</span><span>Express Pickup</span><span>21+ Only</span><span>Small-Batch Flower</span>
+        <span>Lab-Tested</span><span>Batch-Aware</span><span>Express Pickup</span><span>21+ Only</span><span>Small-Batch Flower</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SIGNATURE 3D ============ -->
+  <section class="signature" id="signature">
+    <div class="sig-glow"></div>
+    <div class="wrap signature__grid">
+      <div class="signature__copy reveal">
+        <span class="eyebrow">Crafted to be examined</span>
+        <h2 class="display">Hold it<br>to the light.</h2>
+        <p>Every bud is hand-trimmed, slow-cured, and frosted with trichomes you can study up close. Spin it. Inspect it from every angle. This is what the higher standard actually looks like.</p>
+        <div class="signature__cta">
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-gold" data-cursor>Shop the Collection <span class="arrow">→</span></a>
+        </div>
+        <ul class="sig-specs">
+          <li><span>Hand</span> Trimmed</li>
+          <li><span>Trichome</span> Rich</li>
+          <li><span>Slow</span> Cured</li>
+        </ul>
+      </div>
+      <div class="signature__viewer reveal">
+        <model-viewer id="heroModel" src="assets/models/bud.glb" poster="assets/img/bud.webp"
+          alt="Top Grass premium cannabis flower bud" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="22deg"
+          interaction-prompt="none" shadow-intensity="1.4" shadow-softness="0.6" exposure="1.08" tone-mapping="neutral"
+          camera-orbit="0deg 78deg 118%" min-camera-orbit="auto 45deg auto" max-camera-orbit="auto 115deg 150%"
+          field-of-view="32deg" disable-zoom touch-action="pan-y"
+          ar ar-modes="webxr scene-viewer quick-look" loading="lazy">
+          <button slot="ar-button" class="ar-pill">⊹ View in your space</button>
+        </model-viewer>
+        <div class="signature__hint"><span class="dot"></span> Drag to rotate</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLECTION (horizontal pinned) ============ -->
+  <section class="collection" id="shop">
+    <div class="collection__head">
+      <span class="eyebrow">The Collection</span>
+      <span class="collection__counter"><span id="colNum">01</span> <em>/</em> 06</span>
+    </div>
+    <div class="collection__track" id="colTrack">
+
+      <article class="collection__panel collection__panel--intro">
+        <span class="eyebrow">Browse by category</span>
+        <h2 class="display">Six ways<br>to elevate.</h2>
+        <p>Every category, hand-selected and batch-verified. Scroll through, then browse the full live menu for current strains, potency and pricing.</p>
+        <span class="collection__hint">Scroll to explore →</span>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="01">
+        <div class="panel__media"><img src="assets/img/hero-jar-2.webp" alt="Flower" loading="lazy" /></div>
+        <div class="panel__info">
+          <span class="panel__num">01</span>
+          <h3 class="display">Flower</h3>
+          <p>Small-batch jars, eighths and quarters — cured for aroma, tracked by batch.</p>
+          <span class="panel__tag">Classic Jars · Eighths · Quarters</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop Flower <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="02">
+        <div class="panel__media"><img src="assets/img/prerolls.webp" alt="Pre-Rolls" loading="lazy" /><video class="panel__video" muted loop playsinline preload="none"><source src="assets/video/cat-prerolls.mp4" type="video/mp4" /></video></div>
+        <div class="panel__info">
+          <span class="panel__num">02</span>
+          <h3 class="display">Pre-Rolls</h3>
+          <p>Ready when you are — singles, packs, and infused for the occasion.</p>
+          <span class="panel__tag">Singles · Packs · Infused</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="03">
+        <div class="panel__media"><img src="assets/img/vapes.webp" alt="Vapes" loading="lazy" /><video class="panel__video" muted loop playsinline preload="none"><source src="assets/video/cat-vapes.mp4" type="video/mp4" /></video></div>
+        <div class="panel__info">
+          <span class="panel__num">03</span>
+          <h3 class="display">Vapes</h3>
+          <p>All-in-ones, cartridges and pods. Discreet, precise, potent.</p>
+          <span class="panel__tag">AIOs · Carts · Pods</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="04">
+        <div class="panel__media"><img src="assets/img/edibles.webp" alt="Gummies & chocolate" loading="lazy" /><video class="panel__video" muted loop playsinline preload="none"><source src="assets/video/cat-edibles.mp4" type="video/mp4" /></video></div>
+        <div class="panel__info">
+          <span class="panel__num">04</span>
+          <h3 class="display">Gummies &amp; Chocolate</h3>
+          <p>Considered edibles, precisely dosed for a measured experience.</p>
+          <span class="panel__tag">Dose-Conscious</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="05">
+        <div class="panel__media"><img src="assets/img/concentrates.webp" alt="Concentrates" loading="lazy" /><video class="panel__video" muted loop playsinline preload="none"><source src="assets/video/cat-concentrates.mp4" type="video/mp4" /></video></div>
+        <div class="panel__info">
+          <span class="panel__num">05</span>
+          <h3 class="display">Concentrates</h3>
+          <p>Live resin, wax and hash for the purists chasing terpene clarity.</p>
+          <span class="panel__tag">Resin · Wax · Hash</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel" data-cat data-num="06">
+        <div class="panel__media"><img src="assets/img/tinctures.webp" alt="Tinctures & topicals" loading="lazy" /><video class="panel__video" muted loop playsinline preload="none"><source src="assets/video/cat-tinctures.mp4" type="video/mp4" /></video></div>
+        <div class="panel__info">
+          <span class="panel__num">06</span>
+          <h3 class="display">Tinctures &amp; Topicals</h3>
+          <p>Smoke-free alternatives for wellness, recovery and rest.</p>
+          <span class="panel__tag">Smoke-Free</span>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-ghost" data-cursor>Shop <span class="arrow">→</span></a>
+        </div>
+      </article>
+
+      <article class="collection__panel collection__panel--cta">
+        <span class="eyebrow">Everything in one place</span>
+        <h3 class="display">See the<br>full menu.</h3>
+        <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-gold" data-cursor>Shop All Products <span class="arrow">→</span></a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ STAFF PICKS ============ -->
+  <section class="picks" id="picks">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Curated by our budtenders</span>
+          <h2 class="display reveal">This month's<br>staff picks.</h2>
+        </div>
+        <p class="reveal">The drops our team keeps reaching for. Rotated regularly, always lab-tested.</p>
+      </div>
+
+      <div class="picks-grid">
+        <article class="pick reveal" data-tilt>
+          <div class="pick__img"><img src="assets/img/pick-flower.webp" loading="lazy" data-pick="flower" alt="Ithaca Organics flower" /></div>
+          <span class="eyebrow">Flower</span>
+          <h3>Ithaca Organics</h3>
+          <p style="color:var(--ink-soft);font-size:0.9rem">Sun-grown, living-soil flower with a bright, citrus-forward nose.</p>
+          <div class="pick__meta"><span class="price">$48</span><span class="pick__rating">★★★★★</span></div>
+        </article>
+        <article class="pick reveal" data-tilt>
+          <div class="pick__img"><img src="assets/img/pick-rosin.webp" loading="lazy" data-pick="concentrate" alt="MFNY concentrate" /></div>
+          <span class="eyebrow">Concentrate</span>
+          <h3>MFNY Live Rosin</h3>
+          <p style="color:var(--ink-soft);font-size:0.9rem">Solventless, full-spectrum rosin pressed from fresh-frozen flower.</p>
+          <div class="pick__meta"><span class="price">$70</span><span class="pick__rating">★★★★★</span></div>
+        </article>
+        <article class="pick reveal" data-tilt>
+          <div class="pick__img"><img src="assets/img/pick-vape.webp" loading="lazy" data-pick="vape" alt="Ayrloom vape" /></div>
+          <span class="eyebrow">Vape</span>
+          <h3>Ayrloom AIO</h3>
+          <p style="color:var(--ink-soft);font-size:0.9rem">All-in-one with true-to-strain terpenes and a smooth, even draw.</p>
+          <div class="pick__meta"><span class="price">$45</span><span class="pick__rating">★★★★☆</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORY / DIFFERENCE ============ -->
+  <section class="story wrap" id="story">
+    <span class="eyebrow">The Top Grass difference</span>
+    <p class="story__big" data-words>We treat cannabis like the <em>craft</em> it is — sourced with intention, verified by batch, and handed over with care.</p>
+
+    <div class="features">
+      <div class="feature reveal">
+        <div class="feature__ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h4>Batch-aware quality</h4>
+        <p>Every product is traced to its batch and lab results — so you know exactly what you're getting, every time.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature__ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h4>Express pickup lanes</h4>
+        <p>Order online, skip the wait. Dedicated express lanes get you in and out in minutes.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature__ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+        <h4>Budtenders who know</h4>
+        <p>Real guidance from a team that actually knows the menu — matched to your experience and intent.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="num" data-count="200">200+</div><div class="lbl">Curated Products</div></div>
+      <div class="stat reveal"><div class="num" data-count="100">100%</div><div class="lbl">Lab-Tested</div></div>
+      <div class="stat reveal"><div class="num" data-count="5">5 min</div><div class="lbl">Express Pickup</div></div>
+      <div class="stat reveal"><div class="num" data-count="21">21+</div><div class="lbl">Adult-Use Only</div></div>
+    </div>
+  </section>
+
+  <!-- ============ VISIT ============ -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Find us</span>
+          <h2 class="display reveal">Visit the<br>dispensary.</h2>
+        </div>
+        <p class="reveal">Serving Bellport, Patchogue, Brookhaven and all of Suffolk County. Walk in or order ahead.</p>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit__card reveal">
+          <div class="visit__row">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="k">Address</div><div class="v">28 Sawgrass Dr, Bellport, NY 11713</div></div>
+          </div>
+          <div class="visit__row">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></span>
+            <div><div class="k">Call / Text</div><div class="v"><a href="tel:+16319143596">(631) 914-3596</a></div></div>
+          </div>
+          <div class="visit__row">
+            <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><div class="k">Hours</div><div class="v">Mon–Sun · 9:00 AM – 9:00 PM</div></div>
+          </div>
+          <div class="express">
+            <span class="pulse"></span>
+            <div><strong style="color:var(--emerald-glow)">Express pickup open now</strong><div style="font-size:0.85rem;color:var(--ink-soft)">Order online, pick up in ~5 minutes.</div></div>
+          </div>
+          <a href="https://topgrassli.com/store" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:1.6rem" data-cursor>Order for Pickup <span class="arrow">→</span></a>
+        </div>
+
+        <div class="visit__map reveal">
+          <iframe loading="lazy" title="Top Grass location"
+            src="https://maps.google.com/maps?q=28%20Sawgrass%20Dr%2C%20Bellport%2C%20NY%2011713&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+          <a class="btn btn-ghost visit__directions" target="_blank" rel="noopener" data-cursor
+            href="https://www.google.com/maps/dir/?api=1&destination=28+Sawgrass+Dr+Bellport+NY+11713">Get Directions <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT REQUESTS ============ -->
+  <section class="request" id="request">
+    <div class="request__glow"></div>
+    <div class="wrap request__inner">
+      <span class="eyebrow">The wishlist</span>
+      <h2 class="display reveal">Can't find it?<br>Tell us to stock it.</h2>
+      <p class="reveal">Drop the brand, strain, or product you want on our shelves — we read every request and restock by demand.</p>
+      <form class="request__form reveal" id="requestForm">
+        <textarea name="request" rows="3" maxlength="600" placeholder="e.g. “Please carry MFNY live rosin, and a high-CBD tincture for sleep…”" required aria-label="Your product request"></textarea>
+        <button class="btn btn-gold" type="submit" data-cursor>Send Request <span class="arrow">→</span></button>
+      </form>
+      <p class="request__note">No account needed · For adults 21+ · We never share your info.</p>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="signup">
+    <div class="hero__glow" style="opacity:0.5"></div>
+    <div class="wrap signup__inner">
+      <span class="eyebrow">Stay in the know</span>
+      <h2 class="display reveal" style="margin-top:1rem">First access to<br>every drop.</h2>
+      <p class="reveal">New strains, limited batches and members-only deals — straight to your inbox.</p>
+      <form class="signup__form reveal" id="signupForm">
+        <input type="email" placeholder="your@email.com" required aria-label="Email" />
+        <button class="btn btn-gold" type="submit" data-cursor>Join <span class="arrow">→</span></button>
+      </form>
+      <p style="font-size:0.78rem;color:var(--ink-mute);margin-top:1.2rem">By joining you confirm you are 21+. We never share your info.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#top" class="nav__logo"><img src="assets/img/logo.webp" alt="Top Grass" class="logo-mark" />Top Grass</a>
+          <p>Long Island's premium adult-use cannabis dispensary. Bellport, NY.</p>
+        </div>
+        <div><h5>Shop</h5><ul><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Flower</a></li><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Pre-Rolls</a></li><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Vapes</a></li><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Edibles</a></li><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Concentrates</a></li></ul></div>
+        <div><h5>Explore</h5><ul><li><a href="#picks">Staff Picks</a></li><li><a href="#story">The Difference</a></li><li><a href="#visit">Visit Us</a></li><li><a href="https://topgrassli.com/store" target="_blank" rel="noopener">Express Pickup</a></li></ul></div>
+        <div><h5>Connect</h5><ul><li><a href="tel:+16319143596">(631) 914-3596</a></li><li><a href="#">Instagram</a></li><li><a href="#">Newsletter</a></li><li><a href="#">Recommend a brand</a></li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Top Grass · 28 Sawgrass Dr, Bellport, NY 11713</p>
+        <p>NY OCM Licensed Adult-Use Retailer · 21+</p>
+      </div>
+      <p class="footer__warn">For use only by adults 21 years of age and older. Keep out of reach of children and pets. Cannabis may impair concentration, coordination, and judgment — do not operate a vehicle or machinery under its influence. Please consume responsibly.</p>
+      <p class="footer__preg">⚠ Pregnancy &amp; Breastfeeding Warning: Do not use cannabis products if you are pregnant or breastfeeding. Cannabis use during pregnancy or while breastfeeding may be harmful to the health of the developing fetus or child.</p>
+    </div>
+  </footer>
+
+  <!-- Ambient sound -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Toggle ambient sound" data-cursor>
+    <span class="bars"><i></i><i></i><i></i><i></i></span>
+    <span class="sound-label">Sound</span>
+  </button>
+  <audio id="ambient" loop preload="none" src="assets/audio/ambient.mp3"></audio>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/scene.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/scroll.js"></script>
+</body>
+</html>

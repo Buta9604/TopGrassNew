@@ -1,0 +1,17 @@
+{
+  "name": "Top Grass — The Higher Standard",
+  "short_name": "Top Grass",
+  "description": "Long Island's premium adult-use cannabis dispensary in Bellport, NY. 21+.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "lang": "en-US",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    { "src": "assets/img/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/img/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "assets/img/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
