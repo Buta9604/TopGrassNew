@@ -57,6 +57,7 @@
     const dot = document.querySelector('.cursor-dot');
     const ring = document.querySelector('.cursor-ring');
     let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
     addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
       dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
