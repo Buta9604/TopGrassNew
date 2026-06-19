@@ -19,7 +19,19 @@
     document.body.style.overflow = '';
     dispatchEvent(new Event('tg:enter'));
   }
-  if (acknowledged && gate) gate.classList.add('hide');
+  if (acknowledged && gate) {
+    gate.classList.add('hide');
+  } else if (gate) {
+    // Trap keyboard focus inside the gate so it can't reach the page behind it.
+    const focusables = gate.querySelectorAll('a[href], button');
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    gate.addEventListener('keydown', e => {
+      if (e.key !== 'Tab' || !first) return;
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    document.getElementById('ageYes')?.focus({ preventScroll: true });
+  }
   document.body.style.overflow = 'hidden'; // locked through preloader / gate
   document.getElementById('ageYes')?.addEventListener('click', () => {
     sessionStorage.setItem(KEY, '1');
@@ -67,7 +79,7 @@
       ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
     })();
-    const hoverables = 'a, button, [data-cursor], .cat-card, .pick, model-viewer';
+    const hoverables = 'a, button, [data-cursor], .pick, model-viewer';
     document.querySelectorAll(hoverables).forEach(el => {
       el.addEventListener('mouseenter', () => ring.classList.add('hover'));
       el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
@@ -91,16 +103,6 @@
   document.querySelectorAll('.collection__panel[data-cat]').forEach(p => {
     p.addEventListener('click', e => { if (e.target.closest('a')) return; window.open(STORE, '_blank', 'noopener'); });
   });
-
-  /* ---------- HOVER-VIDEO CARDS ---------- */
-  if (!isTouch) {
-    document.querySelectorAll('.cat-card__video').forEach(v => {
-      const card = v.closest('.cat-card');
-      if (!card) return;
-      card.addEventListener('mouseenter', () => { v.play().catch(() => {}); });
-      card.addEventListener('mouseleave', () => { v.pause(); });
-    });
-  }
 
   /* ---------- LENIS SMOOTH SCROLL ---------- */
   let lenis = null;
@@ -193,7 +195,7 @@
     }
 
     // Clip-path image reveals (cinematic unmask)
-    gsap.utils.toArray('.cat-card__media img, .cat-card__viewer--img img, .pick__img img').forEach(img => {
+    gsap.utils.toArray('.pick__img img').forEach(img => {
       gsap.fromTo(img, { clipPath: 'inset(100% 0% 0% 0%)' }, {
         clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'power3.out',
         scrollTrigger: { trigger: img, start: 'top 90%' }
@@ -350,11 +352,39 @@
   })();
 
   /* ---------- NEWSLETTER ---------- */
-  document.getElementById('signupForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.innerHTML = 'Welcome ✓';
-    e.target.querySelector('input').value = '';
-    setTimeout(() => btn.innerHTML = 'Join <span class="arrow">→</span>', 2600);
-  });
+  (function () {
+    const form = document.getElementById('signupForm');
+    if (!form) return;
+    // ▼ Paste your Formspree (or similar) endpoint here to receive sign-ups by email,
+    //   e.g. 'https://formspree.io/f/abcdwxyz'. Leave '' to store locally for now.
+    const ENDPOINT = '';
+    const btn = form.querySelector('button');
+    const input = form.querySelector('input');
+    const original = btn.innerHTML;
+    let busy = false;
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (busy) return;
+      const value = (input.value || '').trim();
+      if (!value || !input.checkValidity()) { input.reportValidity?.(); return; }
+      busy = true; btn.disabled = true; btn.innerHTML = 'Joining…';
+      try {
+        if (ENDPOINT) {
+          const res = await fetch(ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+          if (!res.ok) throw new Error('bad');
+        } else {
+          // No endpoint yet — keep a local copy so nothing is lost.
+          const saved = JSON.parse(localStorage.getItem('tg_signups') || '[]');
+          saved.push({ at: new Date().toISOString(), email: value });
+          localStorage.setItem('tg_signups', JSON.stringify(saved));
+        }
+        btn.innerHTML = 'Welcome ✓';
+        input.value = '';
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = original; busy = false; }, 2600);
+      } catch (err) {
+        btn.innerHTML = 'Try again';
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = original; busy = false; }, 2600);
+      }
+    });
+  })();
 })();

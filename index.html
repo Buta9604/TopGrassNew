@@ -120,18 +120,18 @@
   </div>
 
   <!-- ============ AGE GATE ============ -->
-  <div class="age-gate" id="ageGate">
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <div class="age-gate__inner">
       <model-viewer class="leaf-3d" src="assets/models/leaf.glb" poster="assets/img/logo.webp" alt="Top Grass"
         camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="32deg" interaction-prompt="none"
         exposure="1.25" shadow-intensity="1.1" tone-mapping="neutral" environment-image="neutral"
         camera-orbit="0deg 75deg 105%" disable-zoom touch-action="pan-y" loading="eager"></model-viewer>
-      <div class="age-gate__title display">Welcome to Top&nbsp;Grass</div>
+      <div class="age-gate__title display" id="ageGateTitle">Welcome to Top&nbsp;Grass</div>
       <p>You must be 21 years or older to enter. Please verify your age.</p>
       <div class="age-gate__btns">
         <button class="btn btn-gold" id="ageYes">I'm 21 or older <span class="arrow">→</span></button>
       </div>
-      <p class="deny" style="margin-top:1.4rem"><a href="https://www.google.com" id="ageNo">I am under 21</a></p>
+      <p class="deny" style="margin-top:1.4rem"><a href="https://www.google.com" id="ageNo" rel="noopener noreferrer">I am under 21</a></p>
     </div>
   </div>
 
@@ -471,7 +471,7 @@
       <h2 class="display reveal" style="margin-top:1rem">First access to<br>every drop.</h2>
       <p class="reveal">New strains, limited batches and members-only deals — straight to your inbox.</p>
       <form class="signup__form reveal" id="signupForm">
-        <input type="email" placeholder="your@email.com" required aria-label="Email" />
+        <input type="email" name="email" placeholder="your@email.com" required aria-label="Email" />
         <button class="btn btn-gold" type="submit" data-cursor>Join <span class="arrow">→</span></button>
       </form>
       <p style="font-size:0.78rem;color:var(--ink-mute);margin-top:1.2rem">By joining you confirm you are 21+. We never share your info.</p>
