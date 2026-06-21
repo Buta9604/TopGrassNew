@@ -235,15 +235,12 @@
         </ul>
       </div>
       <div class="signature__viewer reveal">
-        <model-viewer id="heroModel" src="assets/models/bud.glb" poster="assets/img/bud.webp"
-          alt="Top Grass premium cannabis flower bud" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="22deg"
-          interaction-prompt="none" shadow-intensity="1.4" shadow-softness="0.6" exposure="1.08" tone-mapping="neutral"
-          camera-orbit="0deg 78deg 118%" min-camera-orbit="auto 45deg auto" max-camera-orbit="auto 115deg 150%"
-          field-of-view="32deg" disable-zoom touch-action="pan-y"
-          ar ar-modes="webxr scene-viewer quick-look" loading="lazy">
-          <button slot="ar-button" class="ar-pill">⊹ View in your space</button>
-        </model-viewer>
-        <div class="signature__hint"><span class="dot"></span> Drag to rotate</div>
+        <video id="heroBud" class="signature__video" poster="assets/img/bud-360.webp"
+          autoplay loop muted playsinline preload="auto"
+          aria-label="Top Grass premium cannabis flower bud rotating a full 360 degrees">
+          <source src="assets/video/bud-360.mp4" type="video/mp4" />
+        </video>
+        <div class="signature__hint"><span class="dot"></span> 360° view</div>
       </div>
     </div>
   </section>
